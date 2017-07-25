@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 float calculate_interest(float total, float rate){
-    return total * (1.00 + (rate/100.0)) ;
+    return total * (1.00 + ((rate/100.0)/12.00)) ;
 }
 
 int main()
@@ -18,16 +18,16 @@ int main()
     printf("Enter monthly payment: ");
     scanf("%f", &monthly_payment);
     
+    loan_price = calculate_interest(loan_price, interest_rate);
     printf("Balance remaining after first payment: %.2f\n", loan_price - monthly_payment);
     loan_price -= monthly_payment;
     loan_price = calculate_interest(loan_price, interest_rate);
-    
+
     printf("Balance remaining after second payment: %.2f\n", loan_price - monthly_payment);
     loan_price -= monthly_payment;
     loan_price = calculate_interest(loan_price, interest_rate);
     
     printf("Balance remaining after third payment: %.2f\n", loan_price - monthly_payment);
-    loan_price -= monthly_payment;
-    loan_price = calculate_interest(loan_price, interest_rate);
+ 
 }
 
